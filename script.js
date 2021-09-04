@@ -1,34 +1,36 @@
-const DEFAULTGRID = 10;
+const DEFAULTGRID = 16;
 const DEFAULTCOLOR = '#333333';
 
 let currentGrid = DEFAULTGRID;
 let currentColor = DEFAULTCOLOR;
-let inputGrid;
 
-// Older Attempt
-// function setCurrenGrid(newSize) {
-// 	currentGrid = newSize;
-// }
+document.documentElement.style.setProperty('--pixel-no', currentGrid);
 
-// function changeGrid(value) {
-// 	setCurrentGrid(value);
-// }
-
-// from html oninput
+// Click New Grid to update the number of pixels
 function updateValue() {
-	inputGrid = document.querySelector('.pixels-required').value;
+	currentGrid = document.getElementById('pixels').value;
+	////use input to change css variable
+	document.documentElement.style.setProperty('--pixel-no', currentGrid);
+	deleteDiv();
+
+	for (let i = 0; i < currentGrid * currentGrid; i++) {
+		//// mulitply input x input and create divs
+		let createdDivs = document.createElement('div');
+		createdDivs.className = 'pixel';
+		createdDivs.addEventListener('mouseover', (event) => {
+			//change colour function to be inserted below
+			console.log('Mouse out');
+		});
+
+		document.querySelector('.container-grid').appendChild(createdDivs);
+	}
 }
 
-console.log(inputGrid);
-
-console.log(currentGrid);
-
-////use input to change css variable
-
-//// mulitply input x input and create divs
-
-//// reset to blank
+function deleteDiv() {
+	//// reset to blank
+	document.querySelector('.container-grid').innerHTML = '';
+}
 
 //// mousover event
 
-///rainbow randow
+// ///rainbow randow

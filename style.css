@@ -72,7 +72,7 @@ input[type=number] {
 	left: 50%;
 	transform: translateX(-50%);
 
-	background-color: orangered;
+	background-color: white;
 
 	grid-template-columns: repeat(var(--pixel-no), minmax(10px, 1fr));
 	grid-template-rows: repeat(var(--pixel-no), minmax(10px, 1fr));
@@ -83,5 +83,5 @@ input[type=number] {
 	padding-left: 200px;
 }
 .pixel {
-	background-color: black;
+	background-color: white;
 }
