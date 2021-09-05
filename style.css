@@ -20,7 +20,7 @@ body {
 
 button {
 	font-family: 'bungee';
-	margin: 20px;
+	margin: 10px;
 	padding: 20px;
 	width: 200px;
 	border-radius: 20px;
@@ -37,8 +37,42 @@ input[type=number] {
 	font-family: 'bungee';
 	text-align: center;
 }
+
+input[type=color] {
+	width: 80px;
+	height: 80px;
+	border-radius: 30px;
+	overflow: hidden;
+	border: none;
+	padding: none;
+}
 .btn-rainbow {
 	background-image: linear-gradient(to right, red, orange, yellow, green, cyan, blue, purple);
+}
+
+.btn-rainbow:focus {
+	background-image: none;
+	background-color: black;
+	color: white;
+}
+
+.btn-color:focus {
+	background-color: black;
+	color: white;
+}
+
+.btn-eraser:focus {
+	background-color: black;
+	color: white;
+}
+
+.btn-reset:hover {
+	scale: 1.1;
+}
+
+.btn-reset:active {
+	background-color: black;
+	color: white;
 }
 
 .heading {
@@ -62,6 +96,7 @@ input[type=number] {
 	background-color: hsla(0, 0%, 100%, 0.87);
 	border-radius: 20px;
 	padding-bottom: 20px;
+	padding-top: 20px;
 }
 
 .container-grid {
@@ -71,8 +106,6 @@ input[type=number] {
 	position: absolute;
 	left: 50%;
 	transform: translateX(-50%);
-
-	background-color: white;
 
 	grid-template-columns: repeat(var(--pixel-no), minmax(10px, 1fr));
 	grid-template-rows: repeat(var(--pixel-no), minmax(10px, 1fr));

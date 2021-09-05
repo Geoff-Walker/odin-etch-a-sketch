@@ -3,6 +3,10 @@ const DEFAULTCOLOR = '#333333';
 
 let currentGrid = DEFAULTGRID;
 let currentColor = DEFAULTCOLOR;
+let mode = 'color';
+
+let pickedColor = document.getElementById('color-pick').value;
+pickedColor.onchange = (e) => setCurrentColor(e.target.value);
 
 document.documentElement.style.setProperty('--pixel-no', currentGrid);
 
@@ -17,13 +21,15 @@ function updateValue() {
 		//// mulitply input x input and create divs
 		let createdDivs = document.createElement('div');
 		createdDivs.className = 'pixel';
-		createdDivs.addEventListener('mouseover', (event) => {
-			//change colour function to be inserted below
-			console.log('Mouse out');
-		});
-
+		createdDivs.addEventListener('mouseover', changeColor);
 		document.querySelector('.container-grid').appendChild(createdDivs);
 	}
+	document.getElementById('btn-color').focus();
+	mode = 'color';
+}
+
+function setCurrentColor() {
+	pickedColor = currentColor;
 }
 
 function deleteDiv() {
@@ -31,6 +37,33 @@ function deleteDiv() {
 	document.querySelector('.container-grid').innerHTML = '';
 }
 
+function rainbow() {
+	mode = 'rainbow';
+}
+
+function eraser() {
+	mode = 'eraser';
+}
+
+function color() {
+	mode = 'color';
+	pickedColor = document.getElementById('color-pick').value;
+	document.getElementById('btn-color').focus();
+}
+
 //// mousover event
 
 // ///rainbow randow
+function changeColor(e) {
+	if (mode === 'color') {
+		e.target.style.backgroundColor = pickedColor;
+	} else if (mode === 'eraser') {
+		e.target.style.backgroundColor = 'white';
+	} else if (mode === 'rainbow') {
+		let redRandom = Math.floor(Math.random() * 256);
+		let greenRandom = Math.floor(Math.random() * 256);
+		let blueRandom = Math.floor(Math.random() * 256);
+
+		e.target.style.backgroundColor = `rgb(${redRandom}, ${greenRandom}, ${blueRandom})`;
+	}
+}
